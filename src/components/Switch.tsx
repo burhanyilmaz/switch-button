@@ -17,7 +17,7 @@ type SwitchProps = {
 };
 
 const Switch: FC<SwitchProps> = ({ value, onChange }) => {
-  const mode = useSharedValue(+value);
+  const mode = useSharedValue<boolean>(value);
 
   const moonAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -41,8 +41,8 @@ const Switch: FC<SwitchProps> = ({ value, onChange }) => {
   });
 
   const onToggle = () => {
-    mode.value = mode.value === 1 ? 0 : 1;
-    onChange(!!mode.value);
+    mode.value = !value;
+    onChange(!value);
   };
 
   return (

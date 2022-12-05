@@ -6,14 +6,14 @@ import { StyleSheet } from 'react-native';
 
 const HomeScreen = () => {
   const [isChecked, setIsChecked] = useState(true);
-  const mode = useSharedValue(1);
+  const mode = useSharedValue(true);
   const bgColor = useAnimatedStyle(() => ({
     backgroundColor: withTiming(mode.value ? 'white' : 'black', { duration: ANIMATION_DURATION }),
   }));
 
   const onChange = (val: boolean) => {
     setIsChecked(val);
-    mode.value = +!val;
+    mode.value = val;
   };
 
   return (
